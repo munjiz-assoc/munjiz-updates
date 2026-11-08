@@ -1,10 +1,24 @@
 {
-  "version": "1.1.1",
-  "date": "2026-11-01",
+  "version": "1.0.0",
+  "date": "2026-11-08",
   "notes": [
-    "ترتيب جديد للوحة التحكم: الأرقام أولاً ثم الإجراءات بجانب التقويم",
-    "وسوم موعد ملوّنة في «إجراءات بانتظاركم» حسب الاستعجال",
-    "خط عربي أكبر وأوضح في كل النظام"
+    "الإصدار الأول الرسمي من منجز: نظام متكامل لإدارة الجمعيات",
+    "تقرير شامل بالرسوم والمقارنة بالفترة السابقة، ولوحة Excel برسوم أصلية",
+    "أمان معزَّز: قفل الحساب، وتشفير كلمة مرور البريد، والدخول السريع، وتشفير النسخ الاحتياطية",
+    "تحديث بضغطة واحدة بنسخة احتياطية تلقائية وتوقيع رقمي للتحقق"
   ],
-  "downloadUrl": "https://github.com/munjiz-assoc/munjiz-updates/releases/tag/v1.1.1"
+  "downloadUrl": "https://github.com/munjiz-assoc/munjiz-updates/releases/tag/v1.0.0",
+  "files": {
+    "setup": {
+      "name": "Munjiz-Setup-1.0.0.exe",
+      "sha256": "9f985840e70f6bba0d09dc77574ce707f36065b793af24f79d70348bb2a03f01",
+      "size": 134112444
+    },
+    "portable": {
+      "name": "Munjiz-Portable-1.0.0.exe",
+      "sha256": "441ade78c2fa149d940745b84251afa55118d81b641bbf561ee55b903e3e14dd",
+      "size": 133885947
+    }
+  },
+  "signature": "QqRP1G5/igaoR0/IUOScFR0jQ1hjLGXUL1/RLkKU1NURsHj+181i6pQ4RDOsyw/6KXR+USPrsDEsHARceHwuBw=="
 }
