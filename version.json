@@ -18,14 +18,14 @@
   "files": {
     "setup": {
       "name": "Munjiz-Setup-1.0.1.exe",
-      "sha256": "29dd5115953f92d1dbb96934cae562d68560482adcbafa1ed464f25b073808f2",
-      "size": 134167144
+      "sha256": "ebf7f201f5c11c1cbaae83b23740b9556faffc016a20867eeaea86e133b4087f",
+      "size": 134167163
     },
     "portable": {
       "name": "Munjiz-Portable-1.0.1.exe",
-      "sha256": "01c18d3220a4a5e44d727d43affa4df8024c2803b661d8937c921512902874a1",
-      "size": 133940559
+      "sha256": "dbad6ae1e22926dec89889d198f715e8f450ef5fde130f95601d285913dd5059",
+      "size": 133940581
     }
   },
-  "signature": "Ihzio++uyd9HUio0lxCD/LWwXQxv3FFirBUhozIxO5Yn1NmOsYIcR/o6NKGjfiCqxdBRedevCJBd2MCTFvS+DA=="
+  "signature": "yjM39Iw8zD71n5bfTDR2zasIHR1GI0+qG0N94yoLPXe2ukY5W8fnFZTRawiSuh1O3mGmhI8zqRU1+DGAI3XdAw=="
 }
