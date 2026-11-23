@@ -175,9 +175,9 @@ footer b{color:#d9c9a6}
   <div class="wrap">
     <div>
       <h1>منجز، نظام إدارة <em>الجمعيات الأهلية</em> على جهازك</h1>
-      <p class="lead">أعضاء الجمعية العمومية ومجلس الإدارة، والمالية والموارد البشرية، والمتطوعون والمستفيدون والبرامج، والشهادات والتقارير. كلها في برنامج واحد بالعربية، وبياناتك تبقى في مقر جمعيتك.</p>
+      <p class="lead">منجز نظام عربي لإدارة الجمعيات الأهلية، يساعد مديري الجمعيات على تنظيم الأعضاء والمالية والموارد البشرية والبرامج والتقارير بسهولة من مكان واحد، وبياناتك تبقى في مقر جمعيتك.</p>
       <div class="cta">
-        <a class="btn primary" id="hero-dl" href="#download">تنزيل منجز <span id="hero-ver"></span></a>
+        <a class="btn primary" id="hero-dl" href="https://github.com/munjiz-assoc/munjiz-updates/releases/download/v1.0.1/Munjiz-Setup-1.0.1.exe">تنزيل منجز <span id="hero-ver"></span></a>
         <a class="btn ghost" href="#install">خطوات التثبيت</a>
       </div>
       <div class="meta"><b>لأجهزة Windows</b> (10 و11، 64 بت) · <b>تجربة مجانية 7 أيام</b> بكل المزايا، ولا تحتاج بطاقة ولا تسجيلاً.</div>
@@ -329,7 +329,7 @@ footer b{color:#d9c9a6}
     if(d.date){$('v-date').textContent=fmtDate(d.date);$('n-date').textContent='· '+fmtDate(d.date)}
     var f=d.files||{};
     if(f.setup){$('dl-setup').href=base+encodeURIComponent(f.setup.name);$('v-size-setup').textContent=fmtSize(f.setup.size)}
-    $('hero-dl').href='#download';
+    if(f.setup)$('hero-dl').href=base+encodeURIComponent(f.setup.name);
     renderNotes(d.notes);
   }
   // الاحتياطي: الإصدار 1.0.1 المنشور
