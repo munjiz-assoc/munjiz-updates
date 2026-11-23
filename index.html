@@ -150,6 +150,26 @@ footer b{color:#d9c9a6}
   .btn{width:100%}
   .facts{grid-template-columns:1fr}
 }
+
+/* زر واتساب العائم */
+.wa-fab{position:fixed;left:18px;bottom:18px;z-index:50;font-family:inherit}
+.wa-btn{display:flex;align-items:center;gap:10px;background:#1f9d55;color:#fff;border:0;border-radius:999px;padding:13px 20px 13px 18px;font:inherit;font-weight:800;font-size:16px;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.28)}
+.wa-btn:hover{background:#188a49}
+.wa-btn:focus-visible{outline:3px solid #d9c9a6;outline-offset:3px}
+.wa-btn svg{width:24px;height:24px;flex:none}
+.wa-panel{position:absolute;left:0;bottom:64px;width:min(92vw,360px);background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:18px;box-shadow:0 12px 36px rgba(0,0,0,.3);overflow:hidden}
+.wa-panel[hidden]{display:none}
+.wa-head{background:var(--navy);color:var(--cream);padding:14px 18px}
+.wa-head b{display:block;font-size:17px}
+.wa-head span{font-size:13.5px;color:#c9d0da}
+.wa-list{max-height:min(62vh,440px);overflow:auto;padding:8px}
+.wa-item{display:block;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:12px;padding:11px 14px;margin:6px 0;background:var(--bg)}
+.wa-item:hover,.wa-item:focus-visible{border-color:var(--gold2);outline:none}
+.wa-item b{display:flex;justify-content:space-between;gap:8px;font-size:16px}
+.wa-item b i{font-style:normal;color:#1f9d55;font-size:13.5px;font-weight:800;white-space:nowrap}
+.wa-item p{margin:4px 0 0;font-size:14px;color:var(--muted);line-height:1.65}
+@media print{.wa-fab{display:none}}
+@media (max-width:480px){.wa-fab{left:12px;bottom:12px}.wa-btn{padding:12px 16px}.wa-btn .wa-label{display:none}}
 </style>
 </head>
 <body>
@@ -305,6 +325,43 @@ footer b{color:#d9c9a6}
   </div>
 </footer>
 
+
+<div class="wa-fab" id="wa-fab">
+  <div class="wa-panel" id="wa-panel" role="dialog" aria-label="التواصل عبر واتساب" hidden>
+    <div class="wa-head"><b>تواصل معنا عبر واتساب</b><span>اختر نوع الطلب، وستصلنا رسالة جاهزة.</span></div>
+    <div class="wa-list" id="wa-list"></div>
+  </div>
+  <button class="wa-btn" id="wa-btn" type="button" aria-expanded="false" aria-controls="wa-panel" aria-label="التواصل عبر واتساب">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"/><path d="M9 8.8c.3 2.6 2.6 4.9 5.2 5.2l1.1-1.3-1.9-.9-.8.8c-1-.5-1.9-1.4-2.4-2.4l.8-.8-.9-1.9z" fill="currentColor" stroke="none"/></svg>
+    <span class="wa-label">تواصل معنا</span>
+  </button>
+</div>
+<script>
+(function(){
+  var NUMBER='966562237846';
+  var ITEMS=[
+    {t:'استفسار',d:'أخبرونا باسم الجمعية وما تودون تنظيمه.',m:'السلام عليكم، أرغب في الاستفسار عن نظام «مُنجِز» لإدارة الجمعيات الأهلية.'},
+    {t:'تجربة النظام',d:'التجربة مجانية سبعة أيام، ويمكن التنزيل من هذه الصفحة مباشرة.',m:'السلام عليكم، أرغب في تجربة نظام «مُنجِز».\nاسم الجمعية: '},
+    {t:'طلب اشتراك',d:'يلزم: ملف بيانات التفعيل (الإعدادات ← حول النظام ← الترخيص)، وقبول اتفاقية الترخيص. ثم يتواصل معكم أحد موظفينا.',m:'السلام عليكم، أرغب في الاشتراك في نظام «مُنجِز».\nاسم الجمعية: \nرقم ترخيص الجمعية: \nاسم المسؤول وصفته: '},
+    {t:'تجديد اشتراك',d:'يلزم: ملف بيانات التفعيل الجديد من الجهاز نفسه.',m:'السلام عليكم، أرغب في تجديد اشتراك نظام «مُنجِز».\nاسم الجمعية: \nتاريخ انتهاء الاشتراك الحالي: '},
+    {t:'دعم فني',d:'يلزم: رقم الإصدار، ووصف المشكلة، ولقطة شاشة دون بيانات شخصية. ولا نطلب كلمات المرور أبداً.',m:'السلام عليكم، أحتاج مساعدة في نظام «مُنجِز».\nاسم الجمعية: \nرقم الإصدار (الإعدادات ← حول النظام): \nوصف المشكلة: '}
+  ];
+  var btn=document.getElementById('wa-btn'),panel=document.getElementById('wa-panel'),list=document.getElementById('wa-list');
+  ITEMS.forEach(function(it){
+    var a=document.createElement('a');
+    a.className='wa-item';a.target='_blank';a.rel='noopener noreferrer';
+    a.href='https://wa.me/'+NUMBER+'?text='+encodeURIComponent(it.m);
+    var b=document.createElement('b');b.textContent=it.t;
+    var i=document.createElement('i');i.textContent='واتساب ›';b.appendChild(i);
+    var p=document.createElement('p');p.textContent=it.d;
+    a.appendChild(b);a.appendChild(p);list.appendChild(a);
+  });
+  function setOpen(o){panel.hidden=!o;btn.setAttribute('aria-expanded',o?'true':'false')}
+  btn.addEventListener('click',function(){setOpen(panel.hidden)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!panel.hidden){setOpen(false);btn.focus()}});
+  document.addEventListener('click',function(e){if(!panel.hidden&&!document.getElementById('wa-fab').contains(e.target))setOpen(false)});
+})();
+</script>
 <script>
 (function(){
   var REPO='munjiz-assoc/munjiz-updates';
