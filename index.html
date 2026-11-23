@@ -266,14 +266,18 @@ footer b{color:#d9c9a6}
   </div>
 </section>
 
-<!-- 5. الجديد -->
-<section class="alt">
+<!-- 5. ميزات عامة -->
+<section class="alt" id="daily">
   <div class="wrap">
-    <h2 class="sec">ما الجديد في هذا الإصدار</h2>
-    <p class="sub">&nbsp;</p>
-    <div class="news">
-      <h3>الإصدار <span id="n-ver">1.0.1</span> <span class="d" id="n-date">· 19 نوفمبر 2026</span></h3>
-      <ul id="n-list"></ul>
+    <h2 class="sec">ميزات تسهّل العمل اليومي</h2>
+    <p class="sub">أدوات عملية تختصر الوقت والجهد في المتابعة اليومية للجمعية.</p>
+    <div class="grid">
+      <div class="card"><div class="ic">📊</div><h3>لوحة معلومات رئيسية</h3><p>نظرة سريعة على أوضاع الجمعية: الأعضاء والمالية والبرامج والمهام والمستجدات، من شاشة واحدة.</p></div>
+      <div class="card"><div class="ic">🔔</div><h3>تنبيهات استباقية</h3><p>تنبيه قبل انتهاء العقود والمستندات والتراخيص، حتى لا يفوت موعد مهم.</p></div>
+      <div class="card"><div class="ic">📅</div><h3>مهام وتقويم</h3><p>إسناد المهام للموظفين مع إشعار بالبريد الإلكتروني ومتابعة إنجازها، وتقويم يعرض المناسبات والمواعيد.</p></div>
+      <div class="card"><div class="ic">✉️</div><h3>مراسلات وبريد</h3><p>سجل للصادر والوارد بأرقام متسلسلة، وإرسال الدعوات والتذكيرات للأعضاء بالبريد الإلكتروني.</p></div>
+      <div class="card"><div class="ic">📥</div><h3>استيراد وتصدير</h3><p>استيراد الأعضاء والمستفيدين من ملفات Excel مع كشف الأخطاء والتكرار، وتصدير التقارير بصيغتي PDF وExcel.</p></div>
+      <div class="card"><div class="ic">🌙</div><h3>واجهة عربية سهلة</h3><p>واجهة عربية كاملة تُقرأ من اليمين إلى اليسار، ومعالج إعداد يبدأ العمل في دقائق، ووضع ليلي مريح للعين.</p></div>
     </div>
   </div>
 </section>
@@ -310,27 +314,14 @@ footer b{color:#d9c9a6}
   function fmtDate(s){var m=/^(\d{4})-(\d{2})-(\d{2})/.exec(s||'');return m?(+m[3])+' '+months[+m[2]-1]+' '+m[1]:''}
   function fmtSize(b){return b?Math.round(b/1048576)+' ميجابايت':''}
 
-  // قيم احتياطية تُعرض إن تعذّر جلب الملف
-  var fallbackNotes=[
-    'شهادات جماعية لمقبولي برنامج أو متطوعي فرصة أو أعضاء في ملف واحد',
-    'نسخ احتياطي بوقت يومي ثابت ونسخة عند الإغلاق إن لم تُؤخذ نسخة اليوم',
-    'الفرق التطوعية بتصميم جديد مع قائد للفريق',
-    'اتفاقية ترخيص تُقبل عند أول تشغيل وزر لمشاركة بيانات التفعيل',
-    'عند انتهاء الترخيص يفتح النظام للاطلاع والتصدير فقط وتبقى بياناتك محفوظة'
-  ];
-  function renderNotes(list){
-    var ul=$('n-list');ul.textContent='';
-    (list||fallbackNotes).forEach(function(t){var li=document.createElement('li');li.textContent=t;ul.appendChild(li)});
-  }
   function apply(d){
     var v=d.version, tag='v'+v, base='https://github.com/'+REPO+'/releases/download/'+tag+'/';
-    $('v-num').textContent=v; $('n-ver').textContent=v; $('hero-ver').textContent=v;
+    $('v-num').textContent=v; $('hero-ver').textContent=v;
     document.querySelectorAll('.vv').forEach(function(e){e.textContent=v});
-    if(d.date){$('v-date').textContent=fmtDate(d.date);$('n-date').textContent='· '+fmtDate(d.date)}
+    if(d.date)$('v-date').textContent=fmtDate(d.date);
     var f=d.files||{};
     if(f.setup){$('dl-setup').href=base+encodeURIComponent(f.setup.name);$('v-size-setup').textContent=fmtSize(f.setup.size)}
     if(f.setup)$('hero-dl').href=base+encodeURIComponent(f.setup.name);
-    renderNotes(d.notes);
   }
   // الاحتياطي: الإصدار 1.0.1 المنشور
   apply({version:'1.0.1',date:'2026-11-19',files:{
